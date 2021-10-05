@@ -3,8 +3,9 @@ import * as usersService from '../../../utilities/users-service';
 export default function OrderHistoryPage() {
 
   async function handleCheckToken() {
+    // Promise will resolve to a Date object
     const expDate = await usersService.checkToken();
-    console.log(expDate);
+    console.log(new Date(expDate));
   }
 
   return (

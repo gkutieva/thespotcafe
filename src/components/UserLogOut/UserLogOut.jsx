@@ -1,5 +1,3 @@
-
-  
 import './UserLogOut.css';
 import { logOut } from '../../utilities/users-service';
 

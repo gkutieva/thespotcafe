@@ -5,7 +5,6 @@ import './App.css';
 import AuthPage from '../App/AuthPage/AuthPage';
 import NewOrderPage from '../App/NewOrderPage/NewOrderPage';
 import OrderHistoryPage from '../App/OrderHistoryPage/OrderHistoryPage';
-import NavBar from '../../components/NavBar/NavBar';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -13,20 +12,20 @@ export default function App() {
   return (
     <main className="App">
       { user ?
-          <>
-            <NavBar user={user} setUser={setUser} />
-            <Switch>
-              <Route path="/orders/new">
-                <NewOrderPage />
-              </Route>
-              <Route path="/orders">
-                <OrderHistoryPage />
-              </Route>
-              <Redirect to="/orders" />
-            </Switch>
-          </>
+        <>
+          {/* <NavBar user={user} setUser={setUser} /> */}
+          <Switch>
+            <Route path="/orders/new">
+              <NewOrderPage user={user} setUser={setUser} />
+            </Route>
+            <Route path="/orders">
+              <OrderHistoryPage />
+            </Route>
+            <Redirect to="/orders" />
+          </Switch>
+        </>
         :
-          <AuthPage setUser={setUser}/>
+        <AuthPage setUser={setUser} />
       }
     </main>
   );
