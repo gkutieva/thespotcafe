@@ -36,7 +36,21 @@ orderSchema.virtual('orderId').get(function () {
   return this.id.slice(-6).toUpperCase();
 });
 
-orderSchema.statics.getCart = function (userId) {
+orderSchema.virtual('orderDate').get(function() {
+  console.log(this.createdAt)
+  return this.createdAt.toLocaleDateString()
+});
+
+orderSchema.statics.getUserOrders = async function (userId) {
+  // 'this' is bound to the model (don't use an arrow function)
+  // return the promise that resolves to a cart (unpaid order)
+  return this.find(
+    // query
+    { user: userId, isPaid: true },  
+  );
+};
+
+orderSchema.statics.getCart = async function (userId) {
   return this.findOneAndUpdate(
     { user: userId, isPaid: false },
     { user: userId },

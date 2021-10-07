@@ -14,7 +14,6 @@ export default function NewOrderPage({ user, setUser }) {
   const [activeCat, setActiveCat] = useState('');
   const [cart, setCart] = useState(null);
   const categoriesRef = useRef([]);
-
   // Use history object to change routes programmatically
   const history = useHistory();
 
